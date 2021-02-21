@@ -10,11 +10,13 @@ import alertify from "alertifyjs"
 
  class ProductList extends Component {
     componentDidMount() {
-        this.props.actions.getProducts();
+        const {getProducts} = this.props.actions; // Böyle kullanmaya alışırsan daha da kolay olur.
+        getProducts();
     }
-    addToCart= (product) =>{
-      this.props.actions.addToCart({quantity:1,product})
-      alertify.success(product.productName+" sepete eklendi")
+    addToCart = (product) => { // Boşluklar çokomelli, boşluklara dikkat
+      const {addToCart} = this.props.actions;
+      addToCart({quantity:1,product});
+      alertify.success(product.productName+" sepete eklendi");
     }
     render() {
         return (
